@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-body {
+/* body {
   background-image: linear-gradient(
     to top,
     #fff1eb 0%,
@@ -8,7 +8,7 @@ body {
   ) !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-}
+} */
 @font-face {
   font-family: "poppins";
   src: url("./assets/font/Poppins/Poppins-Black.ttf") format("truetype");
@@ -29,5 +29,5 @@ body {
 }
 
 .navbar {
-  @apply p-4 w-full flex justify-between absolute;
+  @apply p-4 w-full flex justify-end items-center absolute;
 }

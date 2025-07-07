@@ -3,10 +3,15 @@ import showcaseImages from "../assets/sample-images";
 
 const ProductShowCase = () => {
   return (
-    <div className="flex p-10 gap-5">
-      <div className="grid  grid-cols-2 grid-rows-2 gap-2">
+    <div className="flex p-10 gap-5 bg-gradient-to-t to-[#fff1eb] from-[#1E1E1E]">
+      <div className="grid  grid-cols-3 grid-rows-2">
         {showcaseImages.map((item, index) => (
-          <div key={index} className="relative group shadow-xl">
+          <div
+            key={index}
+            className={`relative group shadow-xl ${
+              index === 0 ? "col-span-2" : ""
+            } ${index === 3 ? "col-span-2" : ""}`}
+          >
             <img
               src={item.src}
               alt={item.name}

@@ -5,6 +5,7 @@ import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";
 import ProductShowCase from "./pages/ProductShowCase";
+import Footer from "./components/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,9 @@ function App() {
       </section>
       <section>
         <ProductShowCase />
+      </section>
+      <section>
+        <Footer />
       </section>
     </div>
   );
