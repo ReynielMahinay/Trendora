@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";
 import ProductShowCase from "./pages/ProductShowCase";
 import Footer from "./components/Footer";
+import ProductFetcher from "./components/ProductFetcher";
 
 function App() {
   const [count, setCount] = useState(0);

@@ -1,5 +1,5 @@
 import App from "../App";
-import DisplayProducts from "../pages/DisplayProducts";
+import ProductFetcher from "./ProductFetcher";
 
 const routes = [
   {
@@ -8,7 +8,7 @@ const routes = [
   },
   {
     path: "products",
-    element: <DisplayProducts />,
+    element: <ProductFetcher />,
   },
 ];
 
