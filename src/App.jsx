@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="w-full h-full relative ">
+    <div className="w-full relative ">
       <section>
         <NavBar />
         <LandingPage />

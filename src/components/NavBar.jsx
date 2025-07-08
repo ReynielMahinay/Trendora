@@ -5,8 +5,8 @@ import { ShoppingCart, CircleUser, Search } from "lucide-react";
 const NavBar = ({ title }) => {
   return (
     <div className="navbar ">
-      <Link to="/">
-        <a className="font-poppins text-2xl">{title}</a>
+      <Link to="/" className="font-poppins text-2xl">
+        {title}
       </Link>
       <div className="flex gap-3">
         <Search />
