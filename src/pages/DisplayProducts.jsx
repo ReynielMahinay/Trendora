@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 const DisplayProducts = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerpage, setPostsPerpage] = useState(6);
-
+  const [activeCategory, setActiveCategory] = useState(null);
   // If products is null or undefined, show a loading or fallback
   if (!products || !Array.isArray(products)) {
     return (
@@ -18,9 +18,16 @@ const DisplayProducts = ({ products }) => {
     );
   }
 
+  // ✅ Apply category filter first (optional)
+  const filteredProducts = activeCategory
+    ? products.filter((product) => product.category === activeCategory)
+    : products;
+
+  // ✅ Apply pagination next
   const indexOfLastProduct = currentPage * postsPerpage;
   const indexOfFirstProduct = indexOfLastProduct - postsPerpage;
-  const currentProducts = products.slice(
+
+  const currentProducts = filteredProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -34,14 +41,17 @@ const DisplayProducts = ({ products }) => {
 
       <div className="flex p-10">
         <div className="w-[20%]">
-          <Sidebar />
+          <Sidebar
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
         </div>
 
         <div className="w-[80%] flex flex-col justify-center items-end p-10 gap-10">
-          <Card products={currentProducts} />
+          <Card products={currentProducts} activeCategory={activeCategory} />
           <Pagination
             setCurrentPage={setCurrentPage}
-            totalPosts={products.length}
+            totalPosts={filteredProducts.length}
             productsPerPage={postsPerpage}
             currentPage={currentPage}
           />

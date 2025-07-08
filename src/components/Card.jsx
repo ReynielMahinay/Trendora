@@ -1,8 +1,8 @@
 import React from "react";
 import { ShoppingCart, ShoppingBag, ArrowRight } from "lucide-react";
 
-const Card = ({ products }) => {
-  console.log(products);
+const Card = ({ products, activeCategory }) => {
+  console.log(activeCategory);
   if (!products) {
     return <p>Loading products...</p>;
   }
@@ -26,12 +26,12 @@ const Card = ({ products }) => {
           <p className="text-sm">{products.title}</p>
           <div className="flex flex-col gap-2  w-full">
             <div className="flex flex-row  justify-between items-center gap-1">
-              <button className="uppercase font-dmsans text-[12px] flex gap-2  bg-[#3867ff] p-2 w-full text-center rounded-sm text-white justify-center items-center">
+              <button className="uppercase font-dmsans text-[12px] flex gap-2  bg-[#3867ff] p-2 w-full text-center rounded-sm text-white justify-center items-center hover:bg-white hover:text-black border hover:border-[#3867ff] hover:text-black">
                 Add to cart
-                <ShoppingCart color="#ffffff" size={16} />
+                <ShoppingCart size={16} />
               </button>
-              <span className="border border-[#b4b4b4] p-2 rounded-sm">
-                <ArrowRight color="#3867ff" size={16} strokeWidth={3} />
+              <span className="border border-[#b4b4b4] px-2 py-[9px] rounded-sm text-[#3867ff] hover:text-white hover:bg-[#3867ff] hover:border-white">
+                <ArrowRight size={16} strokeWidth={3} />
               </span>
             </div>
           </div>
