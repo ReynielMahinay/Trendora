@@ -9,6 +9,7 @@ const DisplayProducts = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerpage, setPostsPerpage] = useState(8);
   const [activeCategory, setActiveCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
   // If products is null or undefined, show a loading or fallback
   if (!products || !Array.isArray(products)) {
     return (
@@ -18,10 +19,33 @@ const DisplayProducts = ({ products }) => {
     );
   }
 
-  // ✅ Apply category filter first (optional)
-  const filteredProducts = activeCategory
-    ? products.filter((product) => product.category === activeCategory)
-    : products;
+  // // ✅ Apply category filter first (optional)
+  // const  = activeCategory
+  //   ? products.filter((product) => product.category === activeCategory)
+  //   : products;
+
+  // const filteredProducts = products.filter((product) => {
+  //   const matchesCategory = activeCategory
+  //     ? product.category === activeCategory
+  //     : true;
+
+  //   const matchSearch = product.title
+  //     .toLowerCase()
+  //     .includes(searchTerm.toLowerCase());
+  //   return matchSearch, matchesCategory;
+  // });
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = activeCategory
+      ? product.category.toLowerCase() === activeCategory.toLowerCase()
+      : true;
+
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   // ✅ Apply pagination next
   const indexOfLastProduct = currentPage * postsPerpage;
@@ -31,6 +55,8 @@ const DisplayProducts = ({ products }) => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  console.log("Search:", searchTerm);
+  console.log("Filtered:", filteredProducts.length);
 
   return (
     <div
@@ -44,6 +70,9 @@ const DisplayProducts = ({ products }) => {
           <Sidebar
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            setCurrentPage={setCurrentPage}
           />
         </div>
 
