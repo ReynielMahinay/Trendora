@@ -3,7 +3,7 @@ import showcaseImages from "../assets/sample-images";
 
 const ProductShowCase = () => {
   return (
-    <div className="flex p-10 gap-5 bg-gradient-to-t to-[#fff1eb] from-[#1E1E1E]">
+    <div className="flex p-10 gap-5 ">
       <div className="grid  grid-cols-3 grid-rows-2">
         {showcaseImages.map((item, index) => (
           <div

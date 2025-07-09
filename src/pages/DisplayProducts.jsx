@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 const DisplayProducts = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerpage, setPostsPerpage] = useState(6);
+  const [postsPerpage, setPostsPerpage] = useState(8);
   const [activeCategory, setActiveCategory] = useState(null);
   // If products is null or undefined, show a loading or fallback
   if (!products || !Array.isArray(products)) {
@@ -34,20 +34,22 @@ const DisplayProducts = ({ products }) => {
 
   return (
     <div
-      className="flex flex-col justify-between bg-gradient-to-t from-[#fff1eb] to-[#ace0f9] 
+      className="flex flex-col justify-between  
     min-h-screen "
     >
-      <NavBar title="TRENDORA" />
+      <NavBar title="TEDR" bgColor="bg-white" />
 
-      <div className="flex p-10">
-        <div className="w-[20%]">
+      <div className="flex flex-col">
+        <div className=" p-10 ">
           <Sidebar
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
           />
         </div>
 
-        <div className="w-[80%] flex flex-col justify-center items-end p-10 gap-10">
+        <div></div>
+
+        <div className=" flex flex-col justify-center items-end px-10 py-5 gap-10">
           <Card products={currentProducts} activeCategory={activeCategory} />
           <Pagination
             setCurrentPage={setCurrentPage}

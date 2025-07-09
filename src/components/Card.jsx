@@ -12,7 +12,7 @@ const Card = ({ products, activeCategory }) => {
     return <p>No products available.</p>;
   }
   return (
-    <div className="grid grid-cols-3 grid-rows-auto gap-5 w-full">
+    <div className="grid grid-cols-4 grid-rows-2 gap-5 w-full">
       {products.map((products) => (
         <div
           key={products.id}

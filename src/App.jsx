@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="w-full relative ">
       <section>
-        <NavBar />
+        <NavBar title="TEDR" />
         <LandingPage />
       </section>
       <section>
