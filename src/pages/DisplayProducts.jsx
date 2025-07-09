@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import NavBar from "../components/NavBar";
+import { useOutletContext } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
 import Pagination from "../components/Pagination";
-import Footer from "../components/Footer";
 
-const DisplayProducts = ({ products }) => {
+const DisplayProducts = ({ products, addCart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerpage, setPostsPerpage] = useState(8);
   const [activeCategory, setActiveCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const { cart, setCart } = useOutletContext();
+
   // If products is null or undefined, show a loading or fallback
   if (!products || !Array.isArray(products)) {
     return (
@@ -63,8 +64,6 @@ const DisplayProducts = ({ products }) => {
       className="flex flex-col justify-between  
     min-h-screen "
     >
-      <NavBar title="TEDR" bgColor="bg-white" />
-
       <div className="flex flex-col">
         <div className=" p-10 ">
           <Sidebar
@@ -79,7 +78,11 @@ const DisplayProducts = ({ products }) => {
         <div></div>
 
         <div className=" flex flex-col justify-center items-end px-10 py-5 gap-10">
-          <Card products={currentProducts} activeCategory={activeCategory} />
+          <Card
+            products={currentProducts}
+            activeCategory={activeCategory}
+            addCart={addCart}
+          />
           <Pagination
             setCurrentPage={setCurrentPage}
             totalPosts={filteredProducts.length}
@@ -88,7 +91,6 @@ const DisplayProducts = ({ products }) => {
           />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

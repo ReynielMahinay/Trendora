@@ -14,12 +14,15 @@ const NavBar = ({ title, bgColor, iconColor, flow }) => {
         <Link to="/" className="font-dmsans text-[#1e1e1e]">
           Home
         </Link>
-        <Link to="products" className="font-dmsans text-[#1e1e1e]">
+        <Link to="/products" className="font-dmsans text-[#1e1e1e]">
           shop
         </Link>
       </div>
       <div className={`flex gap-3 ${iconColor}`}>
-        <ShoppingCart />
+        <Link to="/cart">
+          <ShoppingCart />
+        </Link>
+
         <CircleUser />
       </div>
     </div>

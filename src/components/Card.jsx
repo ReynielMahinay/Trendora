@@ -1,5 +1,6 @@
 import React from "react";
 import { ShoppingCart, ShoppingBag, ArrowRight } from "lucide-react";
+import { preview } from "vite";
 
 const Card = ({ products, activeCategory }) => {
   console.log(activeCategory);
@@ -11,6 +12,7 @@ const Card = ({ products, activeCategory }) => {
   if (products.length === 0) {
     return <p>No products available.</p>;
   }
+
   return (
     <div className="grid grid-cols-4 grid-rows-2 gap-5 w-full">
       {products.map((products) => (

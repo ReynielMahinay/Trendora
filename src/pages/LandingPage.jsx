@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import { SquareChevronDown } from "lucide-react";
+import ProductShowCase from "./ProductShowCase";
 
 const LandingPage = () => {
   return (
@@ -26,6 +27,9 @@ const LandingPage = () => {
         <div className="animate-bounce">
           <SquareChevronDown size={32} />
         </div>
+      </div>
+      <div>
+        <ProductShowCase />
       </div>
     </div>
   );

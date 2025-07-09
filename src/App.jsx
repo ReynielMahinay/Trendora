@@ -1,28 +1,38 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";
 import ProductShowCase from "./pages/ProductShowCase";
 import Footer from "./components/Footer";
-import ProductFetcher from "./components/ProductFetcher";
+import { Outlet } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
 
+  const addCart = (product) => {
+    setCart((prevCart) => {
+      const existing = prevCart.fint((item) => item.id === product.id);
+      if (existing) {
+        return prevCart.map((item) => {
+          item.id === product.id
+            ? { ...item, quantiy: item.quantiy + 1 }
+            : item;
+        });
+      } else {
+        return [...prevCart, { ...product, quantiy: 1 }];
+      }
+    });
+  };
   return (
     <div className="w-full relative ">
+      <NavBar title="TEDR" />
+
       <section>
-        <NavBar title="TEDR" />
-        <LandingPage />
+        <Outlet context={{ cart, setCart, addCart }} />
       </section>
-      <section>
-        <ProductShowCase />
-      </section>
-      <section>
-        <Footer />
-      </section>
+
+      <Footer />
     </div>
   );
 }
